@@ -61,7 +61,7 @@ describe('Game', function () {
   })
 
   describe('attackAndCountAlive()', function () {
-    it('should Hero to Weak', function () {
+    it('should attackAndCount tobe hero 1', function () {
       const stupWeak = this.sinon.stub(Hero.prototype, 'isWeak')
       const stupHp = this.sinon.stub(Hero.prototype, 'getHp')
       stupHp.onCall(0).returns(500)
