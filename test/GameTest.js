@@ -46,14 +46,34 @@ describe('Game', function () {
         .to.be.equal('')
     })
   })
+
   describe('countHeroWeak()', function () {
     it('should Hero to Weak', function () {
       const stupWeak = this.sinon.stub(Hero.prototype, 'isWeak')
       stupWeak.onCall(0).returns(true)
       stupWeak.onCall(1).returns(true)
       stupWeak.onCall(2).returns(false)
-      return expect(Game.countHeroWeak([new Hero(), new Hero(), new Hero()]))
+      const heros = [new Hero(), new Hero(), new Hero()]
+
+      return expect(Game.countHeroWeak(heros))
         .to.be.equal(2)
+    })
+  })
+
+  describe('attackAndCountAlive()', function () {
+    it('should Hero to Weak', function () {
+      const stupWeak = this.sinon.stub(Hero.prototype, 'isWeak')
+      const stupHp = this.sinon.stub(Hero.prototype, 'getHp')
+      stupHp.onCall(0).returns(500)
+      stupHp.onCall(1).returns(500)
+      stupHp.onCall(2).returns(200)
+      stupWeak.onCall(0).returns(false)
+      stupWeak.onCall(1).returns(true)
+      stupWeak.onCall(2).returns(false)
+      const heros = [new Hero(), new Hero(), new Hero()]
+
+      return expect(Game.attackAndCountAlive(heros, 300))
+        .to.be.equal(1)
     })
   })
 })
