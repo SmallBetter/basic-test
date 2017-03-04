@@ -20,7 +20,7 @@ export default class Hero {
   setDamage(damage) {
     this.damage = damage
   }
-  getdamage() {
+  getDamage() {
     return this.damage
   }
   setWeak(weak) {
