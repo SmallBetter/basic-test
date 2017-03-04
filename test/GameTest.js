@@ -46,4 +46,14 @@ describe('Game', function () {
         .to.be.equal('')
     })
   })
+  describe('newhero()', function () {
+    it('should Name myHero Kebab Case myhero', function () {
+      const stupWeak = this.sinon.stub(Hero.prototype, 'isWeak')
+      stupWeak.onCall(0).returns(true)
+      stupWeak.onCall(1).returns(true)
+      stupWeak.onCall(2).returns(false)
+      return expect(Game.countHeroWeak([new Hero(), new Hero(), new Hero()]))
+        .to.be.equal(2)
+    })
+  })
 })

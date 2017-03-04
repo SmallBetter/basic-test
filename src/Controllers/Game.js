@@ -4,4 +4,8 @@ export default class Game {
     const nameTrimRL = hero.getName().trimLeft().trimRight()
     return nameTrimRL.split(' ').join('-').toLowerCase()
   }
+  static countHeroWeak(heros) {
+    const heroWeak = heros.filter(hero => hero.isWeak() === true)
+    return heroWeak.length
+  }
 }
