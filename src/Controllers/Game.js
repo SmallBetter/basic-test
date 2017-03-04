@@ -13,6 +13,9 @@ export default class Game {
   static attackAndCountAlive(heros, damage) {
     const damageAll = heros.map(hero =>
       hero.isWeak() === true ? hero.getHp() - (damage * 2) : hero.getHp() - damage)
+    if (damage < 0 || Number.isInteger(damage) === false) {
+      throw new Error('invalid damage - should be number add more than 0')
+    }
     return damageAll.reduce((pve, hp) => hp > 0 ? pve + 1 : pve, 0)
   }
 
@@ -21,6 +24,9 @@ export default class Game {
     const damageAll = heros.map(hero =>
       hero.isWeak() === true ? hero.getHp() - (damage * 2) : hero.getHp() - damage)
     const hpRemain = damageAll.reduce((pve, hp) => hp > 0 ? pve + hp : pve, 0)
+    if (damage < 0 || Number.isInteger(damage) === false) {
+      throw new Error('invalid damage - should be number add more than 0')
+    }
     return hpHeroAll - hpRemain
   }
 }
